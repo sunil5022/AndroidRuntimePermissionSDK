@@ -31,7 +31,8 @@ allprojects {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
        
     }
-5) In the body of above method you need to call this method:
+```
+4) In the body of above method you need to call this method:
 ```
     PermissionHelper.onRequestPermissionsResult(
             activity = this,
@@ -39,10 +40,8 @@ allprojects {
             grantResults = grantResults,
             permissions = permissions,
             listener = this
-        )
-``   
+        )   
 # For Example:
-```
   override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<String>,
@@ -57,7 +56,7 @@ allprojects {
             listener = this
         )
     }
-
+```
 5) And override this all method:
 ```
     override fun onPermissionGranted(requestCode: Int) {}
