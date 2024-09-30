@@ -20,7 +20,6 @@ class MainActivity : Activity(), PermissionListener {
         askPermission()
     }
 
-
     private fun askPermission() {
 
         if (PermissionHelper.askCameraVideoPermission(this,100))
