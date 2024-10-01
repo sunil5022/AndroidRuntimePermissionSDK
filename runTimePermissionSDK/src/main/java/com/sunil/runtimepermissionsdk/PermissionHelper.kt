@@ -77,7 +77,7 @@ object PermissionHelper {
         return result.toBoolean()
     }
 
-    fun askImageAudioVideoPermission(activity: Activity, requestCode: Int): Boolean {
+    fun askCameraImageAudioVideoPermission(activity: Activity, requestCode: Int): Boolean {
         val permissionArray = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             PermissionConst.PERMISSION.CAMERA_IMAGE_AUDIO_VIDEO_13
         } else {
