@@ -1,5 +1,5 @@
-# Run Time Permission for support for all devices 
-Simple Permission SDK
+# Run Time Permission for support for all devices with pick the media file form gallery and fetch the real path of it
+Simple Permission SDK with Media handling
 
 > Step 1. Add the JitPack repository to your build file
 
@@ -65,11 +65,27 @@ allprojects {
     override fun shouldShowRequestPermissionRationale(requestCode: Int) {}
     override fun onPermissionDeniedWithNeverAskAgain(requestCode: Int) {}
 
-   
+```
+# FOR PICK MEDIA FROM GALLLERY:
+> Step 1. Call Following method inside click of button:
+```
+  - For Only Image : OpenGallery.forImage(requestCode, this, "Pick Image") // requestCode will be your given any number
+  - For Only Video : OpenGallery.forVideo(requestCode, this, "Pick Video") // requestCode will be your given any number
+  - For Only Video : OpenGallery.forImageAndVideo(requestCode, this, "Pick Image Video") // requestCode will be your given any number.
+```
+> Step 2. For Get the real path of selected media:
 
+Should overRide the onActivityResult method and call this methos inside it.
+```
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
 
+        if (resultCode == RESULT_OK) {
 
+            val selectedMediaUri: Uri? = data?.data
+            Log.d("onActivityResult selectedMediaUri : ", selectedMediaUri.toString())
 
-
-  
-
+           val realPath =selectedMediaUri?.let { GetRealPath.getRealPathFromURI(this, it) }
+           Log.d("onActivityResult realMediaPath : ", realPath!!)
+        }
+    }
